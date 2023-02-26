@@ -8,7 +8,7 @@ build:
   local:
     push: false
   artifacts:
-    - image: client-95
+    - image: client
       context: client
       docker:
         dockerfile: Dockerfile
