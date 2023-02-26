@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: client
-          image: cygnetops/client-95
+          image: client
+          imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
