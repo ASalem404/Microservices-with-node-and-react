@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: event-bus
-          image: cygnetops/event-bus-85
+          image: event-bus
+          imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
