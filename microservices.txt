@@ -4,7 +4,7 @@ Kubernates:
 	pod  : more or less than a running container
 	deployment : monitors a set of pods and sure that they all running and if one fails
 		     restart it.
-	service : provides an easy to remember URL for access the container
+	service : provides an easy to remember URL for access containers
 	
 	we manage kubernates using config file, its a YAML file use to write confige for objects
 	also u can directly config kubernates without using config file but its a bad peractice
