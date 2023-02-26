@@ -1,0 +1,16 @@
+Kubernates:
+	Kubernates cluster: is a clooection of nodes and master to manage them
+	node : is a machine will run our containers
+	pod  : more or less than a running container
+	deployment : monitors a set of pods and sure that they all running and if one fails
+		     restart it.
+	service : provides an easy to remember URL for access the container
+	
+	we manage kubernates using config file, its a YAML file use to write confige for objects
+	also u can directly config kubernates without using config file but its a bad peractice
+	don't do that.
+	
+	Network with services: 
+	 	1) Cluster IP ==> setup communication between pods in the cluster
+	 	2) NodePort   ==> make a pod accessible from outside  the cluster, used only in dev perpose.
+	 	3) Load Balancer ==> make a pod accessible from outside  the cluster.
