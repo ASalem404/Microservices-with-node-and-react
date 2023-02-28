@@ -1,5 +1,5 @@
 Kubernates:
-	Kubernates cluster: is a clooection of nodes and master to manage them
+	Kubernates cluster: is a collection of nodes and master to manage them
 	node : is a machine will run our containers
 	pod  : more or less than a running container
 	deployment : monitors a set of pods and sure that they all running and if one fails
