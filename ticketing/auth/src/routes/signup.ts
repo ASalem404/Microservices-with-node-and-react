@@ -1,7 +1,8 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
-import { DatabaseConnectionError } from "../errors/database-connection-error";
+import { User } from "../model/userModel";
 import { RequestValidationError } from "../errors/request-validation-error";
+import { BadRequesrError } from "../errors/bad-request-error";
 const router = express.Router();
 
 router.post(
@@ -13,13 +14,21 @@ router.post(
       .isLength({ min: 4, max: 14 })
       .withMessage("password length is not valid"),
   ],
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       throw new RequestValidationError(errors.array());
     }
-    throw new DatabaseConnectionError();
-    res.send({ message: "Heeeeeeeeeeeey, you will never listen me 😕" });
+
+    const { email, password } = req.body;
+    const isExist = await User.findOne({ email });
+    if (isExist) {
+      throw new BadRequesrError("email is already exist");
+    }
+    const user = User.build({ email, password });
+    user.save().then(() => {
+      res.send({ message: "user created" });
+    });
   }
 );
 export { router as signupRouter };
