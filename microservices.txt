@@ -14,3 +14,21 @@ Kubernates:
 	 	1) Cluster IP ==> setup communication between pods in the cluster
 	 	2) NodePort   ==> make a pod accessible from outside  the cluster, used only in dev perpose.
 	 	3) Load Balancer ==> make a pod accessible from outside  the cluster.
+
+
+==> why we dont use cookie to handle expiration of session ?
+	- cookie is handled by the browser, so the browser after couple of time,
+		will expire the cookie, but its easy for any user to copy the cookie and ignore 
+		the expiration date, and continue using the cookie to get the response.
+		so we use JWT because expiration date is encrypted inside it in someway.
+		
+==> How to create secret for jwt in K8S ?? 
+	- kubectl create secret generic jwt-secret --from-literal=jwt=asdf
+	
+==> we can override the machanism of converting object to json by adding a func called toJSON to the object
+	ex:	person = {name:"Ahmed", toJson(){return 1}}
+	anytime you called JSON.stringfy(person) ==> it will return 1
+	
+==> if you want to check if session is defined in header and if jwt is defined in header in session field 
+	you can do that in this statement  if(!req.session || !req.session.jwt)  XX
+	but you can do it like this if(!req.session?.jwt) 

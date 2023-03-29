@@ -16,6 +16,12 @@ spec:
         - name: auth
           image: auth
           imagePullPolicy: Never
+          env:
+            - name: jwt
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: jwt
 ---
 apiVersion: v1
 kind: Service
